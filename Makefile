@@ -30,6 +30,8 @@ SRC_PATH						= ./Src/
 
 SRC_FILES						= main.c
 SRC_FILES						+= stacks_init.c
+SRC_FILES						+= base_operations.c
+SRC_FILES						+= utils.c
 
 #MAP_SRC_PATH					= $(SRC_PATH)Maps/
 
@@ -69,11 +71,11 @@ all: depends $(NAME)
 depends: 
 	@$(MAKE) -C $(PRINTF_PATH)
 	@$(MAKE) -C $(LIB_PATH)
-	@echo "🍄 Libft compilation completed 🍄"
+	@echo "🍄 Libft compilation completed!"
 
 $(OBJS_DIR):
 	@mkdir -p Obj
-	@echo "📋 Objects directory created 📋"
+	@echo "📋 Objects directory created!"
 
 $(OBJS_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
@@ -81,18 +83,18 @@ $(OBJS_DIR)/%.o: %.c
 
 $(NAME): $(OBJS_DIR) $(OBJS) depends $(LIB)
 	@$(CC) $(CFLAGS) $(INC) $(OBJS) $(LIB) $(PRINTF) -o $(NAME)
-	@echo "🤎 Compilation completed 🤎"
+	@echo "🤎 Compilation completed!"
 
 clean:
 	@$(MAKE) clean -C $(LIB_PATH)
 	@$(RM) $(OBJS)
-	@echo "🌷 Objects removed successfully 🌷"
+	@echo "🌷 Objects removed successfully!"
 
 fclean: clean
 	@$(MAKE) fclean -C $(LIB_PATH)
 	@$(RM) $(NAME) $(OBJS_DIR)
-	@echo "✨ Program removed successfully ✨"
+	@echo "✨ Program removed successfully!"
 
 re: fclean all
-		@echo "🦉 Re-compile was successfull 🦉"
+		@echo "🦉 Re-compile was successfull!"
 

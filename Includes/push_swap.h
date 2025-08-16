@@ -14,16 +14,38 @@
 
 //Structs//
 
-typedef struct s_node
+typedef struct s_list
 {
-	int				value;
-	int				index;
-	int				push_cost;
-	bool			above_median;
-	bool			cheapest;
-	struct	s_node	*target;
-	struct	s_node	*next;
-	struct	s_node	*prev;
-} t_node;
+	int		*value;		//array of values
+	size_t	size;		// size of stack a with only a few numbers
+	size_t	max_size;	//stack a + b / original a
+} t_list;
+
+typedef struct s_all
+{
+	t_list	stack_a;
+	t_list	stack_b;
+} t_all;
+
+//Stack//
+
+int	start(t_list *stack_a, t_list *stack_b, int ac, char **av);
+size_t	count_stack(int ac, char **av);
+bool	fill_stack(int ac, char **av, t_list *stack_to_fill);
+bool	fill_stack_one(char *arg, t_list *stack_to_fill, size_t *index_x);
+bool	check_duplicates(t_list *stack, int result);
+
+//Movements//
+
+void	swap(t_list *stack);
+void	push(t_list *to, t_list *from);
+void	reverse_rotate(t_list *stack);
+void	rotate(t_list *stack);
+
+//Utils//
+
+char	*ft_strdup_char(const char *arg, char delimiter);
+bool	ft_atoi_modified(const char *str, int *result);
+
 
 #endif

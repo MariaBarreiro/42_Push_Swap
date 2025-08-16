@@ -101,7 +101,7 @@ MKDIR           = mkdir -p
 
 $(OBJS_DIR):
 	@mkdir -p Obj
-	@echo "📋 Objects directory created (Libft) 📋"
+#	@echo "📋 Objects directory created (Libft) 📋"
 
 $(OBJS_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
@@ -109,17 +109,17 @@ $(OBJS_DIR)/%.o: %.c
 
 $(NAME): $(OBJS_DIR) $(OBJS) 
 	$(AR) $(NAME) $(OBJS) 
-	@echo "🤎 Compilation completed (Libft) 🤎"
+#	@echo "🤎 Compilation completed (Libft) 🤎"
 
 clean:
 	@$(MAKE) clean -C $(PRINTF_PATH)
 	@$(RM) $(OBJS)
-	@echo "🌷 Objects removed successfully (Libft) 🌷"
+#	@echo "🌷 Objects removed successfully (Libft) 🌷"
 
 fclean: clean
 	@$(MAKE) fclean -C $(PRINTF_PATH)
 	@$(RM) $(NAME) $(OBJS_DIR)
-	@echo "✨ Program removed successfully (Libft) ✨"
+#	@echo "✨ Program removed successfully (Libft) ✨"
     
 re: fclean all
-		@echo "🦉 Re-compile was successfull (Libft) 🦉"
+#		@echo "🦉 Re-compile was successfull (Libft) 🦉"

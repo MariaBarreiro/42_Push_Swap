@@ -48,7 +48,7 @@ all: $(NAME)
 
 $(OBJS_DIR):
 	@mkdir -p Obj
-	@echo "📋 Objects directory created (Ft_Printf) 📋"
+#	@echo "📋 Objects directory created (Ft_Printf) 📋"
 
 $(OBJS_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
@@ -56,16 +56,16 @@ $(OBJS_DIR)/%.o: %.c
 
 $(NAME): $(OBJS_DIR) $(OBJS)
 	$(AR) $(NAME) $(OBJS)
-	@echo "🤎 Compilation completed (Ft_Printf) 🤎"
+#	@echo "🤎 Compilation completed (Ft_Printf) 🤎"
 
 clean:
 	$(RM) $(OBJS)
-	@echo "🌷 Objects removed successfully (Ft_Printf)🌷"
+#	@echo "🌷 Objects removed successfully (Ft_Printf)🌷"
 
 fclean: clean
 	 $(RM) $(NAME) $(OBJS_DIR)
-	@echo "✨ Program removed successfully (Ft_Printf) ✨"
+#	@echo "✨ Program removed successfully (Ft_Printf) ✨"
     
 re: fclean all
-		@echo "🦉 Re-compile was successfull (Ft_Printf) 🦉"
+#		@echo "🦉 Re-compile was successfull (Ft_Printf) 🦉"
 
