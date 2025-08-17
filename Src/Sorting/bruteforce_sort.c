@@ -35,18 +35,27 @@ void	sort_three_numbers(t_list *stack_a)
 		rra(stack_a);
 	else if (first < third && first < second && second > third)
 	{
-		rra(stack_a);
 		sa(stack_a);
+		ra(stack_a);
 	}
 	else if (first > second && second > third)
 	{
+		ra(stack_a);
 		sa(stack_a);
-		rra(stack_a);
 	}
 }
 
-// void	sort_four_numbers(t_list *stack_a, t_list *stack_b)
-// {}
-//
-// void	sort_five_numbers(t_list *stack_a, t_list *stack_b)
-// {}
+void	sort_four_numbers(t_list *stack_a, t_list *stack_b)
+{
+	move_min(stack_a, stack_b);
+	sort_three_numbers(stack_a);
+	pa(stack_a, stack_b);
+}
+
+void	sort_five_numbers(t_list *stack_a, t_list *stack_b)
+{
+	move_max(stack_a, stack_b);
+	sort_four_numbers(stack_a, stack_b);
+	pa(stack_a, stack_b);
+	ra(stack_a);
+}

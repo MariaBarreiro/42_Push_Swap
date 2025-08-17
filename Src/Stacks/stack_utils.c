@@ -27,10 +27,10 @@ void	sort_solution(t_list *stack_a, t_list *stack_b)
 		sort_two_numbers(stack_a);	
 	else if (n_tokens == 3)
 		sort_three_numbers(stack_a);	
-	// else if (n_tokens == 4)
-	// 	sort_four_numbers(stack_a, stack_b);	
-	// else if (n_tokens == 5)
-	// 	sort_five_numbers(stack_a, stack_b);	
+	else if (n_tokens == 4)
+		sort_four_numbers(stack_a, stack_b);	
+	else if (n_tokens == 5)
+		sort_five_numbers(stack_a, stack_b);	
 	// else if (n_tokens > 5)
 	// {}
 

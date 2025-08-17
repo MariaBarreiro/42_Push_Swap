@@ -19,6 +19,8 @@ typedef struct s_list
 	int		*value;		//array of values
 	size_t	size;		// size of stack a with only a few numbers
 	size_t	max_size;	//stack a + b / original a
+	size_t	min_index;
+	size_t	max_index;
 } t_list;
 
 typedef struct s_all
@@ -46,6 +48,8 @@ void	sort_two_numbers(t_list *stack_a);
 void	sort_three_numbers(t_list *stack_a);
 void	sort_four_numbers(t_list *stack_a, t_list *stack_b);
 void	sort_five_numbers(t_list *stack_a, t_list *stack_b);
+void	move_min(t_list	*stack_a, t_list *stack_b);
+void	move_max(t_list	*stack_a, t_list *stack_b);
 
 //Operations//
 
