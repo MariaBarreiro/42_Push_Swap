@@ -16,34 +16,51 @@ NAME = push_swap
 # **************************************************************************** #
 
 
-LIB_PATH						=	./Libs/42_Libft/
-LIB_NAME						= libft.a
-LIB								= $(LIB_PATH)$(LIB_NAME)
+LIB_PATH										=	./Libs/42_Libft/
+LIB_NAME										= libft.a
+LIB													= $(LIB_PATH)$(LIB_NAME)
 
-PRINTF_PATH						= ./Libs/42_Libft/42_Ft_Printf/
-PRINTF_NAME						= libftprintf.a
-PRINTF							= $(PRINTF_PATH)$(PRINTF_NAME)
+PRINTF_PATH									= ./Libs/42_Libft/42_Ft_Printf/
+PRINTF_NAME									= libftprintf.a
+PRINTF											= $(PRINTF_PATH)$(PRINTF_NAME)
 
-INC_PATH						= ./Includes/
+INC_PATH										= ./Includes/
 
-SRC_PATH						= ./Src/
+SRC_PATH										= ./Src/
 
-SRC_FILES						= main.c
-SRC_FILES						+= stacks_init.c
-SRC_FILES						+= base_operations.c
-SRC_FILES						+= utils.c
+SRC_FILES										= push_swap.c
 
-#MAP_SRC_PATH					= $(SRC_PATH)Maps/
+SORTING_SRC_PATH						= $(SRC_PATH)Sorting/
 
-#MAP_SRC_FILES					= handle_map.c
-#MAP_SRC_FILES					+= validate_map.c
-#MAP_SRC_FILES					+= validate_map2.c
+SORTING_SRC_FILES						= bruteforce_sort.c
+SORTING_SRC_FILES						+= sorting_utils.c
 
-SRC								= $(addprefix $(SRC_PATH), $(SRC_FILES))
-#SRC							+= $(addprefix $(MAP_SRC_PATH), $(MAP_SRC_FILES))
+STACKS_SRC_PATH							= $(SRC_PATH)Stacks/
 
-OBJS_DIR						= Obj
-OBJS							= $(patsubst %.c, $(OBJS_DIR)/%.o, $(SRC))
+STACKS_SRC_FILES						= stack_utils.c
+STACKS_SRC_FILES						+= stacks_init.c
+
+UTILS_SRC_PATH							= $(SRC_PATH)Utils/
+
+UTILS_SRC_FILES							= utils.c
+
+OPERATIONS_SRC_PATH					= $(SRC_PATH)Operations/
+
+OPERATIONS_SRC_FILES				= base_operations.c
+OPERATIONS_SRC_FILES				+= rotate.c
+OPERATIONS_SRC_FILES				+= reverse_rotate.c
+OPERATIONS_SRC_FILES				+= swap.c
+OPERATIONS_SRC_FILES				+= push.c
+
+
+SRC													= $(addprefix $(SRC_PATH), $(SRC_FILES))
+SRC													+= $(addprefix $(OPERATIONS_SRC_PATH), $(OPERATIONS_SRC_FILES))
+SRC													+= $(addprefix $(SORTING_SRC_PATH), $(SORTING_SRC_FILES))
+SRC													+= $(addprefix $(STACKS_SRC_PATH), $(STACKS_SRC_FILES))
+SRC													+= $(addprefix $(UTILS_SRC_PATH), $(UTILS_SRC_FILES))
+
+OBJS_DIR										= Obj
+OBJS												= $(patsubst %.c, $(OBJS_DIR)/%.o, $(SRC))
 
 # **************************************************************************** #
 #                                   Compiler                                   #

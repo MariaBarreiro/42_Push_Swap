@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/push_swap.h"
+#include "../../Includes/push_swap.h"
 
 char	*ft_strdup_char(const char *arg, char delimiter)
 {
@@ -54,7 +54,7 @@ bool	ft_atoi_modified(const char *str, int *result)
 	}
 	if (!str[i])
 		return (false);
-	while (str[i] >= '0' && str[i] <= 9 && valid_numbers++ < 10)
+	while (str[i] >= '0' && str[i] <= '9' && valid_numbers++ < 10)
 		n = (n * 10) + (str[i++] - '0');
 	if (str[i] != '\0' || (n * signal > 2147483647) 
 			|| (n * signal < -2147483647))

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/push_swap.h"
+#include "../../Includes/push_swap.h"
 
 bool	check_duplicates(t_list *stack, int result)
 {
@@ -51,7 +51,7 @@ bool	fill_stack_one(char *arg, t_list *stack_to_fill, size_t *index_x)
 		while (*arg && *arg != ' ')
 			arg++;
 	}
-	return (false);
+	return (true);
 }
 
 
@@ -70,7 +70,7 @@ bool	fill_stack(int ac, char **av, t_list *stack_to_fill)
 			ft_printf("ERROR NEEDS HANDLING! fill_stack!");
 		y++;
 	}
-	return (false);
+	return (true);
 }
 
 size_t	count_stack(int ac, char **av)
@@ -81,7 +81,8 @@ size_t	count_stack(int ac, char **av)
 
 	size = 0;
 	y = 0;
-	while (y < (size_t)ac)
+	x = 0;
+	while (y < (size_t)ac && av[y][x])
 	{
 		while (av[y][x])
 		{
@@ -89,6 +90,7 @@ size_t	count_stack(int ac, char **av)
 				size++;
 			x++;
 		}
+		x = 0;
 		y++;
 	}
 	if (!size)
@@ -96,7 +98,7 @@ size_t	count_stack(int ac, char **av)
 	return (size);
 }
 
-int	start(t_list *stack_a, t_list *stack_b, int ac, char **av)
+bool	start(t_list *stack_a, t_list *stack_b, int ac, char **av)
 {
 	size_t	stack_size;	
 
@@ -116,5 +118,5 @@ int	start(t_list *stack_a, t_list *stack_b, int ac, char **av)
 
 	if (fill_stack(ac, av, stack_a) == false)
 		ft_printf("NEED TO HANDLE IT! start!");
-	return (0);
+	return (true);
 }

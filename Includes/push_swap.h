@@ -29,18 +29,41 @@ typedef struct s_all
 
 //Stack//
 
-int	start(t_list *stack_a, t_list *stack_b, int ac, char **av);
+bool	start(t_list *stack_a, t_list *stack_b, int ac, char **av);
 size_t	count_stack(int ac, char **av);
 bool	fill_stack(int ac, char **av, t_list *stack_to_fill);
 bool	fill_stack_one(char *arg, t_list *stack_to_fill, size_t *index_x);
 bool	check_duplicates(t_list *stack, int result);
 
-//Movements//
+//Stack Utils//
+
+bool	check_ascending(t_list *stack);
+void	sort_solution(t_list *stack_a, t_list *stack_b);
+
+//Sorting//
+
+void	sort_two_numbers(t_list *stack_a);
+void	sort_three_numbers(t_list *stack_a);
+void	sort_four_numbers(t_list *stack_a, t_list *stack_b);
+void	sort_five_numbers(t_list *stack_a, t_list *stack_b);
+
+//Operations//
 
 void	swap(t_list *stack);
 void	push(t_list *to, t_list *from);
 void	reverse_rotate(t_list *stack);
 void	rotate(t_list *stack);
+void	sa(t_list *stack_a);
+void	sb(t_list *stack_b);
+void	ss(t_list *stack_a, t_list *stack_b);
+void	pa(t_list *stack_a, t_list *stack_b);
+void	pb(t_list *stack_a, t_list *stack_b);
+void	ra(t_list *stack_a);
+void	rb(t_list *stack_b);
+void	rr(t_list *stack_a, t_list *stack_b);
+void	rrb(t_list *stack_b);
+void	rra(t_list *stack_a);
+void	rrr(t_list *stack_a, t_list *stack_b);
 
 //Utils//
 

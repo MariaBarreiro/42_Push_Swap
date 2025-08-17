@@ -6,11 +6,11 @@
 /*   By: mda-enca <mda-enca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 12:37:34 by mda-enca          #+#    #+#             */
-/*   Updated: 2025/08/16 14:00:49 by mda-enca         ###   ########.fr       */
+/*   Updated: 2025/08/17 13:38:11 by mda-enca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/push_swap.h"
+#include "../../Includes/push_swap.h"
 
 void	swap(t_list *stack)
 {
@@ -39,6 +39,7 @@ void	reverse_rotate(t_list *stack)
 	size_t	i;
 	int		temp;
 
+	temp = 0;
 	if (stack->size > 1)
 	{
 		temp = stack->value[stack->size - 1];
@@ -57,6 +58,7 @@ void	rotate(t_list *stack)
 	size_t	i;
 	int		temp;
 
+	temp = 0;
 	if (stack->size > 1)
 	{
 		i = 0;
