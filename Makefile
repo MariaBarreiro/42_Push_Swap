@@ -98,7 +98,7 @@ $(OBJS_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
-$(NAME): $(OBJS_DIR) $(OBJS) depends $(LIB)
+$(NAME): $(OBJS_DIR) $(OBJS) $(LIB)
 	@$(CC) $(CFLAGS) $(INC) $(OBJS) $(LIB) $(PRINTF) -o $(NAME)
 	@echo "🤎 Compilation completed!"
 
