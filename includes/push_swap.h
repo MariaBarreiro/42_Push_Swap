@@ -51,6 +51,7 @@ void	sort_five_numbers(t_list *stack_a, t_list *stack_b);
 void	move_min(t_list	*stack_a, t_list *stack_b);
 void	move_max(t_list	*stack_a, t_list *stack_b);
 void	radix_sort(t_list *stack_a, t_list *stack_b);
+int		find_max_bites(int max_index);
 
 //Operations//
 

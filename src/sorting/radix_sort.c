@@ -21,3 +21,11 @@ void	radix_sort(t_list *stack_a, t_list *stack_b)
 	max_bites = find_max_bites(n_tokens - 1);
 
 }
+
+int	find_max_bites(int max_index)
+{
+	int	max;
+
+	max = 0;
+
+}
