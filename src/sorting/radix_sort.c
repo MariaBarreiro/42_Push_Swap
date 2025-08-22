@@ -1,0 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   radix_sort.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mda-enca <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/22 15:59:28 by mda-enca          #+#    #+#             */
+/*   Updated: 2025/08/22 15:59:32 by mda-enca         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../includes/push_swap.h"
+
+void	radix_sort(t_list *stack_a, t_list *stack_b)
+{
+	int	n_tokens;
+	int	max_bites;
+
+	n_tokens = stack_a->size;
+	max_bites = find_max_bites(n_tokens - 1);
+
+}
