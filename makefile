@@ -84,9 +84,9 @@ RM              = rm -rf
 #                                    Rules                                     #
 # **************************************************************************** #
  
-all: depends $(NAME)
+all: $(LIB) $(NAME)
 
-depends: 
+$(LIB): 
 	@$(MAKE) -C $(PRINTF_PATH)
 	@$(MAKE) -C $(LIB_PATH)
 
@@ -98,7 +98,7 @@ $(OBJS_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
-$(NAME): $(OBJS_DIR) $(OBJS) $(LIB)
+$(NAME): $(OBJS_DIR) $(OBJS)
 	@$(CC) $(CFLAGS) $(INC) $(OBJS) $(LIB) $(PRINTF) -o $(NAME)
 	@echo "🤎 Compilation completed!"
 
@@ -114,4 +114,6 @@ fclean: clean
 
 re: fclean all
 		@echo "🦉 Re-compile was successfull!"
+
+.SILENT:
 
