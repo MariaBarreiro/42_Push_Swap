@@ -91,7 +91,7 @@ $(LIB):
 	@$(MAKE) -C $(LIB_PATH)
 
 $(OBJS_DIR):
-	@mkdir -p Obj
+	@mkdir -p obj
 	@echo "📋 Objects directory created!"
 
 $(OBJS_DIR)/%.o: %.c

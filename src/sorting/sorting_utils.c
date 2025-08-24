@@ -65,3 +65,18 @@ void	move_max(t_list	*stack_a, t_list *stack_b)
 	}
 	pb(stack_a, stack_b);
 }
+
+int	find_max_bites(int max_index)
+{
+	int	max;
+
+	max = 0;
+	while ((max_index >> max) != 0)
+		max++;
+	return (max);
+}
+
+void	order_stack(t_list *stack_a, int max_bites)
+{
+
+}
