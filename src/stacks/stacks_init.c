@@ -25,11 +25,14 @@ bool	start(t_list *stack_a, t_list *stack_b, int ac, char **av)
 	if (!stack_b->value)
 		ft_printf("Malloc wrong! \n NEED TO HANDLE IT");
 
-	stack_a->max_size = stack_size;
-	stack_b->max_size = stack_size;
-	stack_a->size = 0;
-	stack_b->size = 0;
+	stack_a->index = (int *)malloc(stack_size * sizeof(int));
+	if (!stack_a->index)
+		ft_printf("Malloc wrong! \n NEED TO HANDLE IT");
+	stack_b->index = (int *)malloc(stack_size * sizeof(int));
+	if (!stack_b->index)
+		ft_printf("Malloc wrong! \n NEED TO HANDLE IT");
 
+	init_index(stack_a, stack_b, stack_size);
 	if (fill_stack(ac, av, stack_a) == false)
 		ft_printf("NEED TO HANDLE IT! start!");
 	return (true);
@@ -44,17 +47,39 @@ size_t	count_stack(int ac, char **av)
 	size = 0;
 	y = 0;
 	x = 0;
-	while (y < (size_t)ac && av[y][x])
+	
+	while (y < (size_t)ac)
 	{
+		x = 0;
 		while (av[y][x])
 		{
-			if (av[y][x] != ' ')
-				size++;
-			x++;
+			while (av[y][x] == ' ' && av[y][x])
+				x++;
+
+			if (!av[y][x])
+				break ;
+
+			size++;
+
+			while (av[y][x] && av[y][x] != ' ')
+				x++;
 		}
-		x = 0;
 		y++;
 	}
+
+	// while (y < (size_t)ac && av[y][x])
+	// {
+	// 	while (av[y][x])
+	// 	{
+	// 		if (av[y][x] != ' ' && av[y][x])
+	// 			size++;
+	// 		else if (!av[y][x])
+	// 			break ;
+	// 		x++;
+	// 	}
+	// 	x = 0;
+	// 	y++;
+	// }
 	if (!size)
 		ft_printf("Wasn't able to count stack!\n NEED TO HANDLE IT");
 	return (size);

@@ -76,7 +76,3 @@ int	find_max_bites(int max_index)
 	return (max);
 }
 
-void	order_stack(t_list *stack_a, int max_bites)
-{
-
-}

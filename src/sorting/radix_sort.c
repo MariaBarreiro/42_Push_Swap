@@ -14,10 +14,97 @@
 
 void	radix_sort(t_list *stack_a, t_list *stack_b)
 {
+	int	i;
+	int	j;
 	int	n_tokens;
 	int	max_bites;
 
+	i = 0;
+	j = 0;
 	n_tokens = stack_a->size;
 	max_bites = find_max_bites(n_tokens - 1);
-	order_stack(stack_a, max_bites);
+	order_stack(stack_a);
+	print_stack(stack_a);
+	while (i < max_bites) //loop over each bit position
+	{
+		j = 0;
+		while (j < n_tokens) //process every element in stack a
+		{
+			if((stack_a->index[0] >> i) & 1) //look at the bit i of the TOP element
+				ra(stack_a); //equals to one. keep in stack a and rotate
+			else
+				pb(stack_a, stack_b); //send to stack b
+			j++;
+		}
+		while (stack_b->size > 0) //bring everything back to stack a
+			pa(stack_a, stack_b);
+		i++;
+	}
+}
+void	print_stack(t_list *stack)
+{
+	size_t i = 0;
+
+	ft_printf("STACK (size = %zu):\n", stack->size);
+	while (i < stack->size)
+	{
+		ft_printf("pos %zu: value=%d, index=%d\n", 
+		          i, stack->value[i], stack->index[i]);
+		i++;
+	}
+}
+void	order_stack(t_list *stack_a)
+{
+	size_t	new_index;
+	size_t	min_pos;
+	size_t	i;
+	size_t	k;
+	int		min_value;
+
+	new_index = 0;
+	min_pos = stack_a->size;
+	i = 0;
+	k = 0;
+	min_value = 0;
+	if (!stack_a || !stack_a->value || !stack_a->index || stack_a->size == 0)
+		ft_printf("error needs handling! order_stack!");
+
+	while (i < stack_a->size)
+	{
+		stack_a->index[i] = -1;
+		i++;
+	}
+
+	while (new_index < stack_a->size)
+	{
+			ft_printf("i = %zu, value = %d, index = %d\n", i,  stack_a->value[i], stack_a->index[i]);
+		//min_pos = stack_a->size;
+		while (i < stack_a->size) //find first unassigned position
+		{
+			if (stack_a->index[i] == -1)
+			{
+				min_pos = i;
+				min_value = stack_a->value[i];
+				break;
+			}
+			i++;
+		}	
+		if (min_pos == stack_a->size)
+			break; //nothing left to assign
+		
+		k = min_pos + 1;
+		while (k < stack_a->size)
+		{
+			if (stack_a->index[k] == -1 && stack_a->value[k] < min_value)
+			{
+				min_value = stack_a->value[k];
+				min_pos = k;
+			}
+			k++;
+		}
+		stack_a->index[min_pos] = new_index;
+		new_index++;
+	}
+	stack_a->min_index = 0;
+	stack_a->max_index = (stack_a->size > 0) ? (stack_a->size - 1) : 0;
 }

@@ -17,6 +17,7 @@
 typedef struct s_list
 {
 	int		*value;		//array of values
+	int		*index;
 	size_t	size;		// size of stack a with only a few numbers
 	size_t	max_size;	//stack a + b / original a
 	size_t	min_index;
@@ -36,6 +37,7 @@ size_t	count_stack(int ac, char **av);
 bool	fill_stack(int ac, char **av, t_list *stack_to_fill);
 bool	fill_stack_one(char *arg, t_list *stack_to_fill, size_t *index_x);
 bool	check_duplicates(t_list *stack, int result);
+void	init_index(t_list *stack_a, t_list *stack_b, size_t stack_size);
 
 //Stack Utils//
 
@@ -52,6 +54,9 @@ void	move_min(t_list	*stack_a, t_list *stack_b);
 void	move_max(t_list	*stack_a, t_list *stack_b);
 void	radix_sort(t_list *stack_a, t_list *stack_b);
 int		find_max_bites(int max_index);
+void	order_stack(t_list *stack_a);
+
+void	print_stack(t_list *stack);
 
 //Operations//
 

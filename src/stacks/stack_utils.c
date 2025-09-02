@@ -12,6 +12,25 @@
 
 #include "../../includes/push_swap.h"
 
+void	init_index(t_list *stack_a, t_list *stack_b, size_t stack_size)
+{
+	size_t	i;
+
+	i = 0;
+
+	stack_a->max_size = stack_size;
+	stack_b->max_size = stack_size;
+	stack_a->size = 0;
+	stack_b->size = 0;
+
+	while (i < stack_size)
+	{
+		stack_a->index[i] = -1;
+		stack_b->index[i] = -1;
+		i++;
+	}
+}
+
 bool	check_ascending(t_list *stack)
 {
 	size_t	i;
