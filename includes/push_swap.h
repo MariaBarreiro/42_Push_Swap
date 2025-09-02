@@ -68,8 +68,9 @@ void	move_max(t_list	*stack_a, t_list *stack_b);
 void	radix_sort(t_list *stack_a, t_list *stack_b);
 int		find_max_bits(t_list *stack_a);
 void	order_stack(t_list *stack_a);
-
-void	print_stack(t_list *stack);
+void	check_and_init(t_list *stack_a);
+void	first_loop(t_list *stack_a, size_t *min_pos, int *min_value);
+void	second_loop(t_list *stack_a, size_t *min_pos, int *min_value);
 
 //Operations//
 
@@ -93,4 +94,5 @@ void	rrr(t_list *stack_a, t_list *stack_b);
 
 char	*ft_strdup_char(const char *arg, char delimiter);
 bool	ft_atoi_modified(const char *str, int *result);
+bool	check_atoi(int signal, long n);
 #endif

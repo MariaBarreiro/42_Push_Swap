@@ -6,7 +6,7 @@
 /*   By: mda-enca <mda-enca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 14:57:49 by mda-enca          #+#    #+#             */
-/*   Updated: 2025/08/17 18:14:12 by mda-enca         ###   ########.fr       */
+/*   Updated: 2025/09/02 16:54:58 by mda-enca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	move_min(t_list	*stack_a, t_list *stack_b)
 		}
 		i++;
 	}
-	
 	while (stack_a->value[0] != min)
 	{
 		if (stack_a->min_index > 2)
@@ -55,7 +54,6 @@ void	move_max(t_list	*stack_a, t_list *stack_b)
 		}
 		i++;
 	}
-	
 	stack_a->max_value = stack_a->value[stack_a->max_index];
 	while (stack_a->value[0] != max)
 	{
@@ -69,11 +67,10 @@ void	move_max(t_list	*stack_a, t_list *stack_b)
 
 int	find_max_bits(t_list *stack_a)
 {
-	int	max;
-
-	max = 0;
+	int		max;
 	size_t	i;
 
+	max = 0;
 	i = 0;
 	stack_a->max_value = stack_a->value[0];
 	while (i < stack_a->size)
@@ -85,9 +82,7 @@ int	find_max_bits(t_list *stack_a)
 		}
 		i++;
 	}
-//	printf("max_value: %zu\n", stack_a->max_index);
 	while ((stack_a->max_index >> max) != 0)
 		max++;
 	return (max);
 }
-

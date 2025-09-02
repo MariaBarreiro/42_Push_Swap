@@ -6,7 +6,7 @@
 /*   By: mda-enca <mda-enca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 18:37:04 by mda-enca          #+#    #+#             */
-/*   Updated: 2025/08/22 13:30:44 by mda-enca         ###   ########.fr       */
+/*   Updated: 2025/09/02 16:23:13 by mda-enca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@ char	*ft_strdup_char(const char *arg, char delimiter)
 	i = 0;
 	while (arg[i] && arg[i] != delimiter)
 		i++;
-
 	dup = (char *)malloc((i + 1) * sizeof(char));
 	if (!dup)
 		return (0);
-
 	i = 0;
 	while (arg[i] && arg[i] != delimiter)
 	{
@@ -37,12 +35,10 @@ char	*ft_strdup_char(const char *arg, char delimiter)
 
 bool	ft_atoi_modified(const char *str, int *result)
 {
-	size_t	valid_numbers;
 	size_t	i;
 	long	n;
 	int		signal;
 
-	valid_numbers = 0;
 	i = 0;
 	n = 0;
 	signal = 1;
@@ -54,19 +50,22 @@ bool	ft_atoi_modified(const char *str, int *result)
 	}
 	if (!str[i])
 		return (false);
-	while (str[i] >= '0' && str[i] <= '9' && valid_numbers++ < 10)
+	while (str[i] >= '0' && str[i] <= '9')
 	{
 		n = (n * 10) + (str[i++] - '0');
-		if (++valid_numbers > 10)
-			return (false);
-		else if (signal == 1 && n > 2147483647)
-			return (false);
-		else if (signal == -1 && -n < -2147483648)
-			return (false);
-
+		check_atoi(signal, n);
 	}
 	if (str[i] != '\0')
 		return (false);
 	*result = n * signal;
 	return (true);
-	}
+}
+
+bool	check_atoi(int signal, long n)
+{
+	if (signal == 1 && n > 2147483647)
+		return (false);
+	else if (signal == -1 && (n * -1) < -2147483648)
+		return (false);
+	return (true);
+}

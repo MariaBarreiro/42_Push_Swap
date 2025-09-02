@@ -6,7 +6,7 @@
 /*   By: mda-enca <mda-enca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 11:39:57 by mda-enca          #+#    #+#             */
-/*   Updated: 2025/08/17 14:11:33 by mda-enca         ###   ########.fr       */
+/*   Updated: 2025/09/02 16:28:01 by mda-enca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	sort_three_numbers(t_list *stack_a)
 	first = stack_a->value[0];
 	second = stack_a->value[1];
 	third = stack_a->value[2];
-
 	if (first > second && second < third && first < third)
 		sa(stack_a);
 	else if (first > second && second > third)
@@ -44,23 +43,6 @@ void	sort_three_numbers(t_list *stack_a)
 	}
 	else if (first < second && second > third && first > third)
 		rra(stack_a);
-	//
-	// if (first >= second + third && first  > second && second < third)
-	// 	ra(stack_a);
-	// else if (first  > second && second < third)
-	// 	sa(stack_a);
-	// else if (first > third && first < second && second > third)
-	// 	rra(stack_a);
-	// else if (first < third && first < second && second > third)
-	// {
-	// 	sa(stack_a);
-	// 	ra(stack_a);
-	// }
-	// else if (first > second && second > third)
-	// {
-	// 	ra(stack_a);
-	// 	sa(stack_a);
-	// }
 }
 
 void	sort_four_numbers(t_list *stack_a, t_list *stack_b)
