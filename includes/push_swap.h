@@ -1,16 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mda-enca <mda-enca@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/02 15:59:36 by mda-enca          #+#    #+#             */
+/*   Updated: 2025/09/02 16:01:48 by mda-enca         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
-# define    PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 //Includes//
 
-# include	"../libs/42_libft/inc/libft.h"
-# include	"../libs/42_libft/42_gnl/get_next_line.h"
-# include	"../libs/42_libft/42_ft_printf/inc/ft_printf.h"
-# include	<fcntl.h>
-# include	<unistd.h>
-# include	<stdlib.h>
-# include	<stdbool.h>
-# include	<limits.h>
+# include "../libs/42_libft/inc/libft.h"
+# include "../libs/42_libft/42_gnl/get_next_line.h"
+# include "../libs/42_libft/42_ft_printf/inc/ft_printf.h"
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdbool.h>
+# include <limits.h>
 
 //Structs//
 
@@ -22,13 +34,14 @@ typedef struct s_list
 	size_t	max_size;	//stack a + b / original a
 	size_t	min_index;
 	size_t	max_index;
-} t_list;
+	int		max_value;
+}	t_list;
 
 typedef struct s_all
 {
 	t_list	stack_a;
 	t_list	stack_b;
-} t_all;
+}	t_all;
 
 //Stack//
 
@@ -53,7 +66,7 @@ void	sort_five_numbers(t_list *stack_a, t_list *stack_b);
 void	move_min(t_list	*stack_a, t_list *stack_b);
 void	move_max(t_list	*stack_a, t_list *stack_b);
 void	radix_sort(t_list *stack_a, t_list *stack_b);
-int		find_max_bites(int max_index);
+int		find_max_bits(t_list *stack_a);
 void	order_stack(t_list *stack_a);
 
 void	print_stack(t_list *stack);
@@ -80,6 +93,4 @@ void	rrr(t_list *stack_a, t_list *stack_b);
 
 char	*ft_strdup_char(const char *arg, char delimiter);
 bool	ft_atoi_modified(const char *str, int *result);
-
-
 #endif

@@ -55,10 +55,18 @@ bool	ft_atoi_modified(const char *str, int *result)
 	if (!str[i])
 		return (false);
 	while (str[i] >= '0' && str[i] <= '9' && valid_numbers++ < 10)
+	{
 		n = (n * 10) + (str[i++] - '0');
-	if (str[i] != '\0' || (n * signal > 2147483647) 
-			|| (n * signal < -2147483647))
+		if (++valid_numbers > 10)
+			return (false);
+		else if (signal == 1 && n > 2147483647)
+			return (false);
+		else if (signal == -1 && -n < -2147483648)
+			return (false);
+
+	}
+	if (str[i] != '\0')
 		return (false);
 	*result = n * signal;
 	return (true);
-}
+	}

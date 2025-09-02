@@ -11,26 +11,31 @@
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+#include <stdio.h>
 
 void	radix_sort(t_list *stack_a, t_list *stack_b)
 {
 	int	i;
 	int	j;
 	int	n_tokens;
-	int	max_bites;
+	int	max_bits;
 
 	i = 0;
 	j = 0;
 	n_tokens = stack_a->size;
-	max_bites = find_max_bites(n_tokens - 1);
+//	print_stack(stack_a);
 	order_stack(stack_a);
-	print_stack(stack_a);
-	while (i < max_bites) //loop over each bit position
+	max_bits = find_max_bits(stack_a);
+//	printf("max_bits:%i\n", max_bits);
+//	print_stack(stack_a);
+	while (i < max_bits) //loop over each bit position
 	{
 		j = 0;
+		order_stack(stack_a);
 		while (j < n_tokens) //process every element in stack a
 		{
-			if((stack_a->index[0] >> i) & 1) //look at the bit i of the TOP element
+			// printf("index[0]: %i\n", stack_a->index[j]);
+			if((stack_a->index[j] >> i) & 1) //look at the bit i of the TOP element
 				ra(stack_a); //equals to one. keep in stack a and rotate
 			else
 				pb(stack_a, stack_b); //send to stack b
@@ -40,15 +45,16 @@ void	radix_sort(t_list *stack_a, t_list *stack_b)
 			pa(stack_a, stack_b);
 		i++;
 	}
+//print_stack(stack_a);
 }
 void	print_stack(t_list *stack)
 {
 	size_t i = 0;
 
-	ft_printf("STACK (size = %zu):\n", stack->size);
+	printf("STACK (size = %zu):\n", stack->size);
 	while (i < stack->size)
 	{
-		ft_printf("pos %zu: value=%d, index=%d\n", 
+		printf("pos %zu: value=%d, index=%d\n", 
 		          i, stack->value[i], stack->index[i]);
 		i++;
 	}
@@ -66,19 +72,23 @@ void	order_stack(t_list *stack_a)
 	i = 0;
 	k = 0;
 	min_value = 0;
+	
 	if (!stack_a || !stack_a->value || !stack_a->index || stack_a->size == 0)
 		ft_printf("error needs handling! order_stack!");
 
+//	printf("%zu, %zu", i, stack_a->size);	
 	while (i < stack_a->size)
 	{
 		stack_a->index[i] = -1;
 		i++;
 	}
 
+//	print_stack(stack_a);	
 	while (new_index < stack_a->size)
-	{
-			ft_printf("i = %zu, value = %d, index = %d\n", i,  stack_a->value[i], stack_a->index[i]);
-		//min_pos = stack_a->size;
+	{	
+		i = 0;
+		min_pos = stack_a->size;
+		
 		while (i < stack_a->size) //find first unassigned position
 		{
 			if (stack_a->index[i] == -1)

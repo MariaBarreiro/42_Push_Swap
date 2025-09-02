@@ -23,10 +23,10 @@ int	main (int ac, char **av)
 	t_all	program;
 	
 	if (ac == 1 || (ac == 2 && !av[1][0]))
-		return (0);
+		ft_printf("ERROR NEEDS HANDLING! main!");
 	else if (start(&program.stack_a, &program.stack_b, (ac - 1), &av[1]) == false)
 		return (1);
 	if (check_ascending(&program.stack_a) == false)
-		ft_printf("ERROR NEEDS HANDLING! main!");
+		ft_printf("check_asecending ERROR NEEDS HANDLING! main!");
 	sort_solution(&program.stack_a, &program.stack_b);
 }

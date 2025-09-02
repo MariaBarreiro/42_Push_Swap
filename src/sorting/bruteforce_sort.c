@@ -14,7 +14,8 @@
 
 void	sort_two_numbers(t_list *stack_a)
 {
-	sa(stack_a);
+	if (stack_a->value[0] > stack_a->value[1])
+		sa(stack_a);
 }
 
 void	sort_three_numbers(t_list *stack_a)
@@ -27,22 +28,39 @@ void	sort_three_numbers(t_list *stack_a)
 	second = stack_a->value[1];
 	third = stack_a->value[2];
 
-	if (first >= second + third && first  > second && second < third)
-		ra(stack_a);
-	else if (first  > second && second < third)
+	if (first > second && second < third && first < third)
 		sa(stack_a);
-	else if (first > third && first < second && second > third)
-		rra(stack_a);
-	else if (first < third && first < second && second > third)
-	{
-		sa(stack_a);
-		ra(stack_a);
-	}
 	else if (first > second && second > third)
 	{
-		ra(stack_a);
 		sa(stack_a);
+		rra(stack_a);
 	}
+	else if (first > second && first > third && second < third)
+		ra(stack_a);
+	else if (first < second && second > third && first < third)
+	{
+		sa(stack_a);
+		ra(stack_a);
+	}
+	else if (first < second && second > third && first > third)
+		rra(stack_a);
+	//
+	// if (first >= second + third && first  > second && second < third)
+	// 	ra(stack_a);
+	// else if (first  > second && second < third)
+	// 	sa(stack_a);
+	// else if (first > third && first < second && second > third)
+	// 	rra(stack_a);
+	// else if (first < third && first < second && second > third)
+	// {
+	// 	sa(stack_a);
+	// 	ra(stack_a);
+	// }
+	// else if (first > second && second > third)
+	// {
+	// 	ra(stack_a);
+	// 	sa(stack_a);
+	// }
 }
 
 void	sort_four_numbers(t_list *stack_a, t_list *stack_b)

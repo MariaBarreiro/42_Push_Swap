@@ -56,6 +56,7 @@ void	move_max(t_list	*stack_a, t_list *stack_b)
 		i++;
 	}
 	
+	stack_a->max_value = stack_a->value[stack_a->max_index];
 	while (stack_a->value[0] != max)
 	{
 		if (stack_a->max_index > 3)
@@ -66,12 +67,26 @@ void	move_max(t_list	*stack_a, t_list *stack_b)
 	pb(stack_a, stack_b);
 }
 
-int	find_max_bites(int max_index)
+int	find_max_bits(t_list *stack_a)
 {
 	int	max;
 
 	max = 0;
-	while ((max_index >> max) != 0)
+	size_t	i;
+
+	i = 0;
+	stack_a->max_value = stack_a->value[0];
+	while (i < stack_a->size)
+	{
+		if (stack_a->max_value < stack_a->value[i])
+		{
+			stack_a->max_value = stack_a->value[i];
+			stack_a->max_index = stack_a->index[i];
+		}
+		i++;
+	}
+//	printf("max_value: %zu\n", stack_a->max_index);
+	while ((stack_a->max_index >> max) != 0)
 		max++;
 	return (max);
 }
