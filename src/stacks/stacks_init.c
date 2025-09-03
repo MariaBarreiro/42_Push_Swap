@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include <unistd.h>
 
 bool	start(t_all *program, int ac, char **av)
 {
@@ -96,22 +95,14 @@ bool	fill_stack_one(char *arg, t_list *stack_to_fill, size_t *index_x)
 			break ;
 		str = ft_strdup_char(arg, ' ');
 		if (ft_atoi_modified(str, &result) == false)
-		{
-			write (STDERR_FILENO, "Error\n", 6);
-			free (str);
-			return (false);
-		}
+			return (error_handling_fill_stack(str));
 		if (check_duplicates(stack_to_fill, result) == true)
-		{
-			write (STDERR_FILENO, "Error\n", 6);
-			free (str);
-			return (false);
-		}
+			return (error_handling_fill_stack(str));
 		stack_to_fill->value[*index_x] = result;
 		*index_x += 1;
 		stack_to_fill->size += 1;
 		while (*arg && *arg != ' ')
-			arg++;	
+			arg++;
 		free (str);
 	}
 	return (true);

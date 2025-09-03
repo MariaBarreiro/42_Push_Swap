@@ -12,7 +12,7 @@
 
 #include "../../includes/push_swap.h"
 
-void	die(t_all *program, int	type_exit)
+void	die(t_all *program, int type_exit)
 {
 	if (program->stack_a.value)
 		free(program->stack_a.value);
@@ -34,6 +34,13 @@ void	ft_error(void)
 	exit (1);
 }
 
+bool	error_handling_fill_stack(char *str)
+{
+	write (STDERR_FILENO, "Error\n", 6);
+	free (str);
+	return (false);
+}
+
 void	free_stack(t_list *stack)
 {
 	free(stack->value);
@@ -47,4 +54,3 @@ void	free_program(t_all *program)
 	free(program->stack_a.index);
 	free(program->stack_b.index);
 }
-

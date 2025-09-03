@@ -60,6 +60,7 @@ void	die(t_all *program, int type_exit);
 void	ft_error(void);
 void	free_stack(t_list *stack);
 void	free_program(t_all *program);
+bool	error_handling_fill_stack(char *str);
 
 //Sorting//
 
