@@ -44,6 +44,7 @@ STACKS_SRC_FILES						+= stacks_init.c
 UTILS_SRC_PATH							= $(SRC_PATH)utils/
 
 UTILS_SRC_FILES							= utils.c
+UTILS_SRC_FILES							+= die.c
 
 OPERATIONS_SRC_PATH					= $(SRC_PATH)operations/
 

@@ -74,8 +74,6 @@ void	check_and_init(t_list *stack_a)
 	size_t	i;
 
 	i = 0;
-	if (!stack_a || !stack_a->value || !stack_a->index || stack_a->size == 0)
-		ft_printf("error needs handling! order_stack!");
 	while (i < stack_a->size)
 	{
 		stack_a->index[i] = -1;

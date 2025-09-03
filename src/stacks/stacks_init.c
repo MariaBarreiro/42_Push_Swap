@@ -11,27 +11,28 @@
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+#include <unistd.h>
 
-bool	start(t_list *stack_a, t_list *stack_b, int ac, char **av)
+bool	start(t_all *program, int ac, char **av)
 {
 	size_t	stack_size;	
 
 	stack_size = count_stack(ac, av);
-	stack_a->value = (int *)malloc(stack_size * sizeof(int));
-	if (!stack_a->value)
-		ft_printf("Malloc wrong! \n NEED TO HANDLE IT");
-	stack_b->value = (int *)malloc(stack_size * sizeof(int));
-	if (!stack_b->value)
-		ft_printf("Malloc wrong! \n NEED TO HANDLE IT");
-	stack_a->index = (int *)malloc(stack_size * sizeof(int));
-	if (!stack_a->index)
-		ft_printf("Malloc wrong! \n NEED TO HANDLE IT");
-	stack_b->index = (int *)malloc(stack_size * sizeof(int));
-	if (!stack_b->index)
-		ft_printf("Malloc wrong! \n NEED TO HANDLE IT");
-	init_index(stack_a, stack_b, stack_size);
-	if (fill_stack(ac, av, stack_a) == false)
-		ft_printf("NEED TO HANDLE IT! start!");
+	program->stack_a.value = (int *)malloc(stack_size * sizeof(int));
+	if (!program->stack_a.value)
+		die (program, 1);
+	program->stack_b.value = (int *)malloc(stack_size * sizeof(int));
+	if (!program->stack_b.value)
+		die (program, 1);
+	program->stack_a.index = (int *)malloc(stack_size * sizeof(int));
+	if (!program->stack_a.index)
+		die (program, 1);
+	program->stack_b.index = (int *)malloc(stack_size * sizeof(int));
+	if (!program->stack_b.index)
+		die (program, 1);
+	init_index(&program->stack_a, &program->stack_b, stack_size);
+	if (fill_stack(ac, av, &program->stack_a) == false)
+		die (program, 1);
 	return (true);
 }
 
@@ -60,7 +61,7 @@ size_t	count_stack(int ac, char **av)
 		y++;
 	}
 	if (!size)
-		ft_printf("Wasn't able to count stack!\n NEED TO HANDLE IT");
+		exit (1);
 	return (size);
 }
 
@@ -76,7 +77,7 @@ bool	fill_stack(int ac, char **av, t_list *stack_to_fill)
 	{
 		arg = av[y];
 		if (fill_stack_one(arg, stack_to_fill, &x) == false)
-			ft_printf("ERROR NEEDS HANDLING! fill_stack!");
+			return (false);
 		y++;
 	}
 	return (true);
@@ -95,14 +96,23 @@ bool	fill_stack_one(char *arg, t_list *stack_to_fill, size_t *index_x)
 			break ;
 		str = ft_strdup_char(arg, ' ');
 		if (ft_atoi_modified(str, &result) == false)
-			ft_printf("NEEDS HANDLING! fill_stack_one!");
+		{
+			write (STDERR_FILENO, "Error\n", 6);
+			free (str);
+			return (false);
+		}
 		if (check_duplicates(stack_to_fill, result) == true)
-			ft_printf("NEEDS HANDLING! fill_stack_one!");
+		{
+			write (STDERR_FILENO, "Error\n", 6);
+			free (str);
+			return (false);
+		}
 		stack_to_fill->value[*index_x] = result;
 		*index_x += 1;
 		stack_to_fill->size += 1;
 		while (*arg && *arg != ' ')
-			arg++;
+			arg++;	
+		free (str);
 	}
 	return (true);
 }

@@ -22,7 +22,10 @@ char	*ft_strdup_char(const char *arg, char delimiter)
 		i++;
 	dup = (char *)malloc((i + 1) * sizeof(char));
 	if (!dup)
+	{
+		free (dup);
 		return (0);
+	}
 	i = 0;
 	while (arg[i] && arg[i] != delimiter)
 	{
@@ -53,7 +56,8 @@ bool	ft_atoi_modified(const char *str, int *result)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		n = (n * 10) + (str[i++] - '0');
-		check_atoi(signal, n);
+		if (check_atoi(signal, n) == false)
+			return (false);
 	}
 	if (str[i] != '\0')
 		return (false);

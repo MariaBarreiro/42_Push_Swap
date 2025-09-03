@@ -45,7 +45,7 @@ typedef struct s_all
 
 //Stack//
 
-bool	start(t_list *stack_a, t_list *stack_b, int ac, char **av);
+bool	start(t_all *program, int ac, char **av);
 size_t	count_stack(int ac, char **av);
 bool	fill_stack(int ac, char **av, t_list *stack_to_fill);
 bool	fill_stack_one(char *arg, t_list *stack_to_fill, size_t *index_x);
@@ -56,6 +56,10 @@ void	init_index(t_list *stack_a, t_list *stack_b, size_t stack_size);
 
 bool	check_ascending(t_list *stack);
 void	sort_solution(t_list *stack_a, t_list *stack_b);
+void	die(t_all *program, int type_exit);
+void	ft_error(void);
+void	free_stack(t_list *stack);
+void	free_program(t_all *program);
 
 //Sorting//
 
