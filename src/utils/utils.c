@@ -19,7 +19,11 @@ char	*ft_strdup_char(const char *arg, char delimiter)
 
 	i = 0;
 	while (arg[i] && arg[i] != delimiter)
+	{
+		if (arg[i] == '\0')
+			return (0);
 		i++;
+	}
 	dup = (char *)malloc((i + 1) * sizeof(char));
 	if (!dup)
 	{
@@ -32,7 +36,7 @@ char	*ft_strdup_char(const char *arg, char delimiter)
 		dup[i] = arg[i];
 		i++;
 	}
-	dup[i] = '\0';
+	dup[i] = '\0'; 
 	return (dup);
 }
 
