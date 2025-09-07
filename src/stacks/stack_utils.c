@@ -12,6 +12,15 @@
 
 #include "../../includes/push_swap.h"
 
+void	check_null(char **av, size_t *y, size_t *x)
+{
+	if (av[*y][*x] == '\0')
+	{
+		write (1, "Error\n", 6);
+		exit (255);
+	}
+}
+
 void	init_index(t_list *stack_a, t_list *stack_b, size_t stack_size)
 {
 	size_t	i;

@@ -61,6 +61,7 @@ void	ft_error(void);
 void	free_stack(t_list *stack);
 void	free_program(t_all *program);
 bool	error_handling_fill_stack(char *str);
+void	check_null(char **av, size_t *y, size_t *x);
 
 //Sorting//
 

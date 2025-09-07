@@ -36,7 +36,7 @@ char	*ft_strdup_char(const char *arg, char delimiter)
 		dup[i] = arg[i];
 		i++;
 	}
-	dup[i] = '\0'; 
+	dup[i] = '\0';
 	return (dup);
 }
 
