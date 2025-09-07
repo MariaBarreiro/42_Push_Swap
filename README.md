@@ -1,4 +1,4 @@
-![Score](https://img.shields.io/badge/Score-92.7%25_C-lightgrey) ![Makefile](https://img.shields.io/badge/Makefile-7.6%25-lightgrey)
+![Score](https://img.shields.io/badge/Score-92.4%25_C-lightgrey) ![Makefile](https://img.shields.io/badge/Makefile-7.6%25-lightgrey)
 
 # Push_swap
 
