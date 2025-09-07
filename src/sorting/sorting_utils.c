@@ -45,6 +45,7 @@ void	move_max(t_list	*stack_a, t_list *stack_b)
 
 	i = 0;
 	max = stack_a->value[0];
+	stack_a->max_index = 0;
 	while (i < stack_a->size)
 	{
 		if (max < stack_a->value[i])

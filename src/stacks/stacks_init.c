@@ -52,7 +52,7 @@ size_t	count_stack(int ac, char **av)
 			while (av[y][x] == ' ' && av[y][x])
 				x++;
 			if (!av[y][x])
-				break ;
+				check_null(av, &y, &x);
 			size++;
 			while (av[y][x] && av[y][x] != ' ')
 				x++;
