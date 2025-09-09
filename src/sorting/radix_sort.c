@@ -45,12 +45,10 @@ void	order_stack(t_list *stack_a)
 {
 	size_t	new_index;
 	size_t	min_pos;
-	size_t	k;
 	int		min_value;
 
 	new_index = 0;
 	min_pos = stack_a->size;
-	k = 0;
 	min_value = 0;
 	check_and_init(stack_a);
 	while (new_index < stack_a->size)
